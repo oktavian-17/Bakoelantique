@@ -199,7 +199,7 @@
                 <a class="font-white" href="#artikel">Artikel</a>
             </p>
 
-            <p class="footer-company-name">Copyright &copy; 2022 - <strong>Bakoelantique</strong></p>
+            <p class="footer-company-name">Copyright &copy; 2022 - <strong>Dicky Oktavian (19041076)</strong></p>
         </div>
 
         <div class="footer-center">
@@ -213,12 +213,12 @@
             </div>
             <div class="footer-list">
                 <i class="fa fa-envelope"></i>
-                <p><a href="#">abc@gmail.com</a></p>
+                <p><a href="#">Bakoelantique@gmail.com</a></p>
             </div>
 
              <div class="footer-list">
                 <i class="fa-brands fa-instagram"></i>
-                <p><a href="#">Bakoelantiquephotography10</a></p>
+                <p><a href="https://www.instagram.com/bakoelantiquephotography10/">Bakoelantiquephotography10</a></p>
             </div>
         </div>
         </div>
