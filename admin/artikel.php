@@ -1,19 +1,25 @@
 <?php include("header.php") ?>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+   
           <div class="content">
     
               <div class="container">
               
                 <div class="box">
                   
-                  <div class="box-header">
+                  <div class="box-header font-white">
                   kegiatan
                     <br>
                     <br>
-                    <a href="artikel-add.php" class="text-green"><i class="fa fa-plus"></i> Tambah</a>
+                    <a href="artikel-add.php" class="butt text-cyan"><i class="fa fa-plus"></i> Tambah</a>
                   </div>
+                  <?php 
 
-          </div>
+                      if(isset($_GET['success'])){
+                        echo "<div class='alert alert-success'>".$_GET['success']."</div>";
+                      }
+
+                  ?>
+
 
           <?php
             $query = mysqli_query($conn, "SELECT * FROM artikel");
@@ -36,22 +42,21 @@
                     <tr>
                     <td><?=$no++?></td>
                     <td><?=$row['title']?></td>
-                    <td><?=$row['img']?></td>
+                    <td><img src="../images/<?=$row['img']?>" width="150px" class="text-center"></td>
                     <td><?=$row['body']?></td>
                     <td class="text-center" width="10%">
-                    <a class="btn btn-sm btn-outline-success" href="artikel-edit.php?id=<?=$row['id']?>">
-                      Edit|
+                    <a class="butt butt-close" href="artikel-edit.php?id=<?=$row['id']?>">
+                      Edit
                     </a> 
-                    <a class="btn btn-sm btn-outline-danger" onclick="return confirm('Ingin menghapus ?')" href="artikel-hapus.php?id=<?=$row['id']?>">
-                      |Hapus
+                    <a class="butt butt-close text-red" onclick="return confirm('Ingin menghapus ?')" href="artikel-hapus.php?id=<?=$row['id']?>">
+                      Hapus
                     </a>
-            </td>
+                   </td>
                     </tr>
                 <?php endwhile ?>
               </tbody>
             </table>
           </div>
-        </main>
       </div>
     </div>
 </body>

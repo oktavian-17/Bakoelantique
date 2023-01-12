@@ -1,55 +1,88 @@
-<?php include("header.php") ?>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-          <div class="content">
+<?php 
     
-              <div class="container">
+    include('../koneksi.php');
+  
+?>
+<?php include 'header.php' ?>
+  <!--KONTEN-->
+
+  <section class="content">
+    
+    <div class="container">
+    
+      <div class="box">
+        
+        <div class="box-header font-white">
+          Data Pendaftar
+        </div>
+
+        <div class="box-body">
+
+        <form class="form-cari">
+            
+                <input type="text" name="key" class="input-cari" placeholder="Pencarian">
+                <button type="submit" class="butt">SEARCH</button>
               
-                <div class="box">
-                  
-                  <div class="box-header">
-                  Data Pendaftar
-                    <br>
-
-          </div>
-
-          <?php
-            $query = mysqli_query($conn, "SELECT * FROM pendaftar");
-            $no = 1;
-          ?>
-
-          <div class="table-responsive">
+        </form>
+           
             <table class="table">
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama Lengkap</th>
-                  <th>Tempat Lahir</th>
-                  <th>Tanggal Lahir</th>
+                  <th>ID Pendaftaran</th>
+                  <th>Nama</th>
+                  <th>NRP</th>
                   <th>Jenis Kelamin</th>
-                  <th>Agama</th>
-                  <th>Alamat</th>
-                  <th>Hapus Data</th>
+                  <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
-                <?php while($row = mysqli_fetch_array($query)): ?>
-                    <td><?=$no++?></td>
-                    <td><?=$row['nm_peserta']?></td>
-                    <td><?=$row['tmp_lahir']?></td>
-                    <td><?=$row['tgl_lahir']?></td>
-                    <td><?=$row['jk']?></td>
-                    <td><?=$row['agama']?></td>
-                    <td><?=$row['alamat']?></td>
-                    <td class="text-center" width="10%">
-                    <a class="btn btn-sm btn-outline-danger" onclick="return confirm('Ingin menghapus ?')" href="hapus-data.php?id=<?=$row['id']?>">|  Hapus |</a>
-            		</td>
-                    </tr>
-                <?php endwhile ?>
+
+                <?php 
+
+                    $no = 1;
+
+                    $where = "WHERE 1=1";
+                      if(isset($_GET['key'])){
+                        $where .= " AND nm_peserta LIKE '%".$_GET['key']."%' ";
+                      }
+
+
+                    $list_peserta = mysqli_query($conn, "SELECT * FROM pendaftaran $where ORDER BY id_pendaftaran DESC");
+                      if(mysqli_num_rows($list_peserta) > 0) {
+                      while($row = mysqli_fetch_array($list_peserta)){
+                 ?>
+
+                <tr>
+                  <td class="center"><?php echo $no++ ?></td>
+                  <td><?php echo $row['id_pendaftaran'] ?></td>
+                  <td><?php echo $row['nm_peserta'] ?></td>
+                  <td><?php echo $row['nrp'] ?></td>
+                  <td><?php echo $row['jk'] ?></td>
+                  <td>
+                     <a class="butt butt-close" href="detail-data.php?id=<?php echo $row['id_pendaftaran'] ?>">
+                      Detail
+                    </a> 
+                    <a class="butt butt-close text-red" onclick="return confirm('Yakin ingin menghapus ?')" href="data-hapus.php?id=<?php echo $row['id_pendaftaran'] ?>">
+                      Hapus
+                    </a>
+                  </td>
+                </tr>
+
+              <?php }}else{ ?>
+                <tr>
+                  <td colspan="5">Data tidak ada</td>
+                </tr>
+              <?php } ?>
+
               </tbody>
-            </table>
-          </div>
-        </main>
+             </table> 
+        </div>
+
       </div>
+
     </div>
-</body>
-</html>
+
+  </section>
+
+<?php include 'footer.php' ?>

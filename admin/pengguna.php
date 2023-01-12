@@ -8,19 +8,19 @@
 		
 			<div class="box">
 				
-				<div class="box-header">
+				<div class="box-header font-white">
 					Pengguna
+					<br>
+					<br>
+					<a href="tambah-pengguna.php" class="butt text-green"><i class="fa fa-plus"></i> Tambah</a>
 				</div>
 
 				<div class="box-body">
-
-					<a href="tambah-pengguna.php" class="text-green"><i class="fa fa-plus"></i> Tambah</a>
-					
-
-					<form>
+		
+					<form class="form-cari">
 						
-						  	<input type="text" name="key" placeholder="Pencarian">
-						  	<button type="submit">Go</button>
+						  	<input type="text" name="key" class="input-cari" placeholder="Pencarian">
+						  	<button type="submit" class="butt">SEARCH</button>
 						 	
 					</form>
 
@@ -56,8 +56,8 @@
 								<td><?= $pg['username'] ?></td>
 								<td><?= $pg['level'] ?></td>
 								<td>
-									<a href="edit-pengguna.php?id=<?= $pg['id'] ?>" title="Edit Data" class="text-or"><i class="fa-solid fa-pen-to-square"></i></a>
-									<a href="hapus.php?idpengguna=<?= $pg['id'] ?>" onclick="return confirm('yakin ingin hapus ?')" title="Hapus Data" class="text-red"><i class="fa-sharp fa-solid fa-trash"></i></a>
+									<a href="edit-pengguna.php?id=<?= $pg['id'] ?>" title="Edit Data" class="butt butt-close">Edit</a>
+									<a href="hapus.php?idpengguna=<?= $pg['id'] ?>" onclick="return confirm('yakin ingin hapus ?')" title="Hapus Data" class="butt butt-close text-red">Hapus</a>
 								</td>
 							</tr>
 

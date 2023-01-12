@@ -30,11 +30,19 @@
 
 				<?php }elseif($_SESSION['ulevel'] == 'Admin'){ ?>
 
-					<li><a href="data-pendaftar.php">Data Pendaftar</a></li>
+					<li>
+					<a href="">Data <i class="fa fa-caret-down"></i></a>
+					<ul class="dropdown">
+						<li><a href="alumni.php">Alumni</a></li>
+						<li><a href="anggota.php">Anggota</a></li>
+						<li><a href="data-pendaftar.php">Pendaftar</a></li>
+					</ul>
+					</li>
 					<li><a href="galeri.php">Galeri</a></li>
 					<li>
 						<a href="artikel.php">Kegiatan</i></a>
 					</li>
+					<li><a href="jadwal.php">Jadwal Kegiatan</a></li>
 
 			    <?php } ?>
 

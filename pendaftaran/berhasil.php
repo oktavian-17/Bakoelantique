@@ -1,10 +1,12 @@
-
+<?php 
+	include('../koneksi.php');
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Pendaftaran Anggota</title>
+	<title>Pendaftaran Bakoelantique</title>
 	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 </head>
 <body>
@@ -17,12 +19,21 @@
 		
 			<div class="box">
 				
-				<div class="box-header">
+				<div class="box-header font-white">
 					<h4>Pendaftaran Berhasil</h4>
 				</div>
 
 				<div class="box-body">
-					<button type="button" class="butt" onclick="window.location = '../index.php'">Kembali</button>
+
+					<div class="form-group">
+							
+							<label>Kode Pendaftaran Anda adalah</label>
+							<div class="input-control" readonly><?php echo $_GET['id'] ?></div>
+							
+
+					</div>
+					<a href="cetak.php?id=<?php echo $_GET['id'] ?>" target="_blank" class="butt butt-close">Cetak PDF</a>
+
 				</div>
 
 			</div>

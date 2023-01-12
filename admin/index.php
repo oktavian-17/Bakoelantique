@@ -8,7 +8,7 @@
 		
 			<div class="box">
 				
-				<div class="box-header">
+				<div class="box-header font-white">
 					Dashboard
 				</div>
 

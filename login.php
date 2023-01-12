@@ -16,7 +16,7 @@
 		<div class="box box-login">
 			
 			<div class="box-header center">
-				Login
+				<div class="font-white">Login</div>
 			</div>
 
 			<div class="box-body">
@@ -80,7 +80,7 @@
 			</div>
 
 			<div class="box-footer center">
-				<a href="index.php">Halaman Utama</a>
+				<a class="font-white" href="index.php">Halaman Utama</a>
 			</div>
 
 		</div>
