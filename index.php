@@ -69,6 +69,54 @@
         </div>
     </div>
 
+    <?php
+        $result = mysqli_query($conn, "SELECT * FROM seminar");
+    ?>
+    <?php while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)): ?>
+    <div class="borrder">
+    <div id="galeri" class="containerArtikelHome container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="box-header font-white">
+                <h2>
+                    <?=$row['title']?>   
+                </h2>
+            </div>
+        </div>
+
+        <div class="artikelHome" id="galeriData">
+            
+                <table>
+                <tbody>
+                <tr>
+                    <img src="images/<?=$row["img"]?>" alt="Galeri Foto  <?=$row["id"]+1?>" width="1000px"> 
+                </tr>
+                <td>
+                    <br>
+                    <?=$row['body']?>      
+                </td>
+                </tbody>
+                </table>
+
+
+                <div class="row">
+                    <div class="col">
+                        <a href="daftar-seminar/index.php">
+                            <br>
+                            <br>
+              
+                            <button class="joinus">Daftar Seminar</button>
+                        </a>
+                    </div>
+                </div>
+             
+
+            
+
+        </div>
+    </div>
+    </div>
+    <?php endwhile ?>
 
     <div class="borrder">
     <div id="galeri" class="containerArtikelHome container">

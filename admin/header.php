@@ -38,6 +38,13 @@
 						<li><a href="data-pendaftar.php">Pendaftar</a></li>
 					</ul>
 					</li>
+					<li>
+					<a href="">Seminar <i class="fa fa-caret-down"></i></a>
+					<ul class="dropdown">
+						<li><a href="seminar.php">Seminar</a></li>
+						<li><a href="data-seminar.php">Pendaftar Seminar</a></li>
+					</ul>
+					</li>
 					<li><a href="galeri.php">Galeri</a></li>
 					<li>
 						<a href="artikel.php">Kegiatan</i></a>

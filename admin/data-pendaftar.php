@@ -60,6 +60,9 @@
                   <td><?php echo $row['nrp'] ?></td>
                   <td><?php echo $row['jk'] ?></td>
                   <td>
+                    <button class="butt butt-close">
+                       Terima
+                    </button>
                      <a class="butt butt-close" href="detail-data.php?id=<?php echo $row['id_pendaftaran'] ?>">
                       Detail
                     </a> 
