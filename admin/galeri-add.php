@@ -20,21 +20,21 @@ include("header.php");
                       <div class="form-group">
                         
                           <label for="judul">Judul</label>
-                          <input type="text" class="input-control" name="judul" id="judul" value="" required>
+                          <input type="text" class="input-control" name="judul" id="judul" value="" >
 
                       </div>
 
                        <div class="form-group">
                         
                             <label for="body">Isi</label>
-                            <textarea type="text" class="input-control" name="body" id="body" value="" required></textarea>
+                            <textarea type="text" class="input-control" name="body" id="body" value="" ></textarea>
             
                       </div>
 
                       <div class="form-group">
                         
                           <label for="img">Gambar</label>
-                          <input type="file" class="input-control" name="img" id="img" value="" required>
+                          <input type="file" class="input-control" name="img" id="img" value="" >
 
                       </div>  
 

@@ -27,18 +27,18 @@ include("header.php");
 
                       <div class="form-group">
                         <label for="judul">Judul</label>
-                        <input type="text" class="input-control" name="judul" id="judul" value="<?=$p->title?>" required>
+                        <input type="text" class="input-control" name="judul" id="judul" value="<?=$p->title?>" >
                       </div>
 
                       <div class="form-group">
                         <label for="body">Isi</label>
-                        <input type="text" class="input-control" name="body" id="body" value="<?=$p->body?>" required>
+                        <textarea type="text" class="input-control" name="body" id="body" value="<?=$p->body?>" ></textarea>
                       </div>
 
                       <div class="form-group">
                         <label for="img">Gambar</label>
                         <img src="../images/<?=$p->img?>" width="150px">
-                        <input type="hidden" class="input-control" name="img2" id="img" value="<?=$p->img?>" required>
+                        <input type="hidden" class="input-control" name="img2" id="img" value="<?=$p->img?>" >
                         <input type="file" class="input-control" name="img" id="img" >
                       </div>
                       
