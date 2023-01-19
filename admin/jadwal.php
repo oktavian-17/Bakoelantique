@@ -47,6 +47,9 @@
                     <td><?=$row['tempat']?></td>
                     <td><?=$row['tanggal']?></td>
                     <td class="text-center" width="10%">
+                    <a class="butt butt-close" href="jadwal-edit.php?id=<?=$row['id']?>">
+                           Edit
+                    </a>   
                     <a class="butt butt-close text-red" onclick="return confirm('Ingin menghapus ?')" href="jadwal-hapus.php?id=<?=$row['id']?>">
                       Hapus
                     </a>
