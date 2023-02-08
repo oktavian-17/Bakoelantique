@@ -1,3 +1,10 @@
+<?php
+
+  include('../koneksi.php');
+  $anggota = mysqli_query($conn, "SELECT * FROM anggota");
+
+?>
+
 <?php include("header.php") ?>
    
           <div class="content">
@@ -7,10 +14,7 @@
                 <div class="box">
                   
                   <div class="box-header font-white">
-                  Anggota
-                    <br>
-                    <br>
-                    <a href="anggota-add.php" class="butt text-cyan"><i class="fa fa-plus"></i> Tambah</a>
+                  <h3>Anggota</h3>
                   </div>
                   <?php 
 
@@ -21,61 +25,39 @@
                   ?>
 
           <div class="table-responsive">
-            <form class="form-cari">
-            
-                <input type="text" name="key" class="input-cari" placeholder="Pencarian">
-                <button type="submit" class="butt">SEARCH</button>
-              
-            </form>
             <table class="table table-striped table-sm ">
               <thead>
-                <tr>
-                  <th class="text-center">No</th>
-                  <th class="text-center">Nama</th>
-                  <th class="text-center">Gambar</th>
-                  <th class="text-center">Angkatan</th>
-                  <th class="text-center">Jabatan</th>
-                  <th class="text-center">Aksi</th>
-                </tr>
+                    <tr>
+                        <th>NRP</th>
+                        <th>Foto</th>
+                        <th>Nama Anggota</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Angkatan</th>
+                        <th>Kelamin</th>
+                        <th>Jabatan</th>
+                        <th>Aksi</th>
+                    </tr>
               </thead>
               <tbody>
-                <?php 
-
-                    $no = 1;
-
-                    $where = "WHERE 1=1";
-                      if(isset($_GET['key'])){
-                        $where .= " AND title LIKE '%".$_GET['key']."%' ";
-                      }
-
-
-                    $list_peserta = mysqli_query($conn, "SELECT * FROM anggota $where ORDER BY id DESC");
-                      if(mysqli_num_rows($list_peserta) > 0) {
-                      while($row = mysqli_fetch_array($list_peserta)){
-                 ?>
-
-                <tr>
-                  <td class="center"><?php echo $no++ ?></td>
-                  <td><?php echo $row['title'] ?></td>
-                  <td><img src="../images/<?=$row['img']?>" width="150px" class="text-center"></td>
-                  <td><?php echo $row['body'] ?></td>
-                  <td><?php echo $row['jabatan'] ?></td>
-                  <td>
-                    <a class="butt butt-close" href="anggota-edit.php?id=<?=$row['id']?>">
-                      Edit
-                    </a> 
-                    <a class="butt butt-close text-red" onclick="return confirm('Ingin menghapus ?')" href="anggota-hapus.php?id=<?=$row['id']?>">
-                      Hapus
-                    </a>
-                  </td>
-                </tr>
-
-              <?php }}else{ ?>
-                <tr>
-                  <td colspan="5">Data tidak ada</td>
-                </tr>
-              <?php } ?>
-              </tbody>
+                    <?php while($row = mysqli_fetch_object($anggota)): ?>
+                    <tr>
+                        <td><?= $row->nrp ?></td>
+                        <td><img src="../images/<?= $row->img?>" width="50px" class="text-center"></td>
+                        <td><?= $row->nama ?></td>
+                        <td><?= $row->tgl_lahir ?></td>
+                        <td><?= $row->angkatan ?></td>
+                        <td><?= $row->jk ?></td>
+                        <td><?= $row->jabatan ?></td>
+                        <td>
+                            <a href="anggota-edit.php?id=<?php echo $row->id ?>" class="butt butt-close">Edit</a>
+                            <?php if($row->status != "Alumni"): ?> 
+                                 <a href="lulus.php?id=<?php echo $row->id ?>" class="butt butt-close" onclick="return confirm('YAKIN ?')">Lulus</a>
+                            <?php endif?>
+                            <a href="anggota-hapus.php?id=<?php echo $row->id ?>" class="butt butt-close text-red" onclick="return confirm('YAKIN ?')">Del</a>
+                        </td>
+                    </tr>
+                    <?php endwhile ?>
+                </tbody>
             </table>
           </div>
       </div>

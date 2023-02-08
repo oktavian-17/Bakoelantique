@@ -20,7 +20,8 @@
 		'".$_POST['jk']."',
 		'".$_POST['agama']."',
 		'".$_POST['almt_peserta']."',
-		'".$_POST['Alasan']."'
+		'".$_POST['Alasan']."',
+		'".$_POST['s_daftar']."'
 	)");
 
 	if($insert){

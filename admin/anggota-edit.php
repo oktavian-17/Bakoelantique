@@ -19,25 +19,53 @@ include("header.php");
                 <div class="box">
                   
                   <div class="box-header font-white">
-                    Edit Alumni
+                    <h3>Edit Anggota</h3>
                   </div>
 
                   <div class="box-body">
                   <form action="" method="POST" enctype="multipart/form-data">
 
                       <div class="form-group">
-                        <label for="judul">Nama</label>
-                        <input type="text" class="input-control" name="judul" id="judul" value="<?=$p->title?>" >
+                        <label for="nrp">NRP</label>
+                        <input type="text" class="input-control" name="nrp" id="nrp" value="<?=$p->nrp?>" >
                       </div>
 
                       <div class="form-group">
-                        <label for="body">Angkatan</label>
-                        <textarea type="text" class="input-control" name="body" id="body" value="<?=$p->body?>" ></textarea>
+                        <label for="nama">Nama</label>
+                        <input type="text" class="input-control" name="nama" id="nama" value="<?=$p->nama?>" >
+                      </div>
+
+                      <div class="form-group">
+                        <label for="tgl_lahir">Tanggal Lahir</label>
+                        <input type="date" class="input-control" name="tgl_lahir" id="tgl_lahir" value="<?=$p->tgl_lahir?>" >
+                      </div>
+
+                      <div class="form-group">
+                        <label for="angkatan">Angkatan</label>
+                        <input type="text" class="input-control" name="angkatan" id="angkatan" value="<?=$p->angkatan?>" >
+                      </div>
+
+                      <div class="form-group">
+                        <label for="body">Jenis Kelamin</label>
+                        <select class="input-control" name="jk" id="jk" value="<?=$p->jk?>">
+                           <option value="Laki-laki">Laki-laki</option>
+                           <option value="Perempuan">Perempuan</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="jabatan">Jabatan</label>
+                        <select class="input-control" name="jabatan" id="jabatan" value="<?=$p->jabatan?>">
+                           <option value="Ketua">Ketua</option>
+                           <option value="Wakil">Wakil</option>
+                           <option value="Sekretaris">Sekretaris</option>
+                           <option value="Anggota">Anggota</option>
+                        </select>
                       </div>
 
                       <div class="form-group">
                         <label for="img">Gambar</label>
-                        <img src="../images/<?=$p->img?>" width="150px">
+                        <img src="../images/<?=$p->img?>" width="50px">
                         <input type="hidden" class="input-control" name="img2" id="img" value="<?=$p->img?>" >
                         <input type="file" class="input-control" name="img" id="img" >
                       </div>
@@ -51,8 +79,12 @@ include("header.php");
 
                       if(isset($_POST['submit'])){
 
-                          $judul = addslashes(ucwords($_POST['judul']));
-                          $isi = addslashes($_POST['body']);
+                          $nrp = $_POST['nrp'];
+                          $nama = addslashes(ucwords($_POST['nama']));
+                          $tgl_lahir = $_POST['tgl_lahir'];
+                          $angkatan = $_POST['angkatan'];
+                          $jk = $_POST['jk'];
+                          $jabatan = $_POST['jabatan'];
 
                           if($_FILES['img']['name'] !=''){
 
@@ -94,9 +126,13 @@ include("header.php");
                           }
 
                           $update = mysqli_query($conn, "UPDATE anggota SET
-                            title = '".$judul."',
-                            img   = '".$rename."',
-                            body  = '".$isi."'
+                            nrp = '".$nrp."',
+                            nama = '".$nama."',
+                            tgl_lahir = '".$tgl_lahir."',
+                            angkatan = '".$angkatan."',
+                            jk = '".$jk."',
+                            jabatan = '".$jabatan."',
+                            img   = '".$rename."'
                             WHERE id = '".$_GET['id']."'
                           "); 
 

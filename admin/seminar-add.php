@@ -27,7 +27,7 @@ include("header.php");
                        <div class="form-group">
                         
                             <label for="body">Isi</label>
-                            <textarea type="text" class="input-control" name="body" id="body" value="" required></textarea>
+                            <textarea type="text" class="input-control" name="body" id="body" value="" ></textarea>
             
                       </div>
 

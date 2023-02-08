@@ -32,7 +32,7 @@ include("header.php");
 
                       <div class="form-group">
                         <label for="body">Isi</label>
-                        <input type="text" class="input-control" name="body" id="body" value="<?=$p->body?>" required>
+                        <textarea type="text" class="input-control" name="body" id="body" value="<?=$p->body?>" ></textarea>
                       </div>
 
                       <div class="form-group">

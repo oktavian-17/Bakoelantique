@@ -1,5 +1,6 @@
 <?php 
   include('../koneksi.php');
+  $anggota = mysqli_query($conn, "SELECT * FROM anggota");
 
  ?>
 
@@ -65,44 +66,29 @@
             </form>
             <table class="table table-striped table-sm ">
               <thead>
-                <tr>
-                  <th class="text-center">No</th>
-                  <th class="text-center">Nama</th>
-                  <th class="text-center">Gambar</th>
-                  <th class="text-center">Angkatan</th>
-                  <th class="text-center">Jabatan</th>
-                </tr>
+                    <tr>
+                        <th>NRP</th>
+                        <th>Foto</th>
+                        <th>Nama Anggota</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Angkatan</th>
+                        <th>Kelamin</th>
+                        <th>Jabatan</th>
+                    </tr>
               </thead>
               <tbody>
-                <?php 
-
-                    $no = 1;
-
-                    $where = "WHERE 1=1";
-                      if(isset($_GET['key'])){
-                        $where .= " AND title LIKE '%".$_GET['key']."%' ";
-                      }
-
-
-                    $list_peserta = mysqli_query($conn, "SELECT * FROM anggota $where ORDER BY id DESC");
-                      if(mysqli_num_rows($list_peserta) > 0) {
-                      while($row = mysqli_fetch_array($list_peserta)){
-                 ?>
-
-                <tr>
-                  <td class="center"><?php echo $no++ ?></td>
-                  <td><?php echo $row['title'] ?></td>
-                  <td><img src="../images/<?=$row['img']?>" width="150px" class="text-center"></td>
-                  <td><?php echo $row['body'] ?></td>
-                  <td><?php echo $row['jabatan'] ?></td>
-                </tr>
-
-              <?php }}else{ ?>
-                <tr>
-                  <td colspan="5">Data tidak ada</td>
-                </tr>
-              <?php } ?>
-              </tbody>
+                    <?php while($row = mysqli_fetch_object($anggota)): ?>
+                    <tr>
+                        <td><?= $row->nrp ?></td>
+                        <td><img src="../images/<?= $row->img?>" width="70px" class="text-center"></td>
+                        <td><?= $row->nama ?></td>
+                        <td><?= $row->tgl_lahir ?></td>
+                        <td><?= $row->angkatan ?></td>
+                        <td><?= $row->jk ?></td>
+                        <td><?= $row->jabatan ?></td>
+                    </tr>
+                    <?php endwhile ?>
+                </tbody>
             </table>
           </div>
       </div>
